@@ -89,7 +89,7 @@ export function CustomerStoriesSection() {
                 </div>
 
                 <div className="mt-16 grid sm:grid-cols-3 gap-8">
-                    <Card className="bg-sky-50 border-0">
+                    <Card className="bg-emerald-50 border-0">
                         <CardContent className="p-8">
                             <div className="text-4xl font-bold mb-2">50K+</div>
                             <p className="text-muted-foreground">Campaigns Optimized</p>

@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input"
 
 export function NewsletterSection() {
   return (
-    <section className="py-20 bg-sky-50">
+    <section className="py-20 bg-emerald-50">
       <div className="container">
         <div className="max-w-xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
