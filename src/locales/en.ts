@@ -37,6 +37,16 @@ export const ENJSON = {
       subtitle: 'TIMELINE',
       founded: 'Founded',
       foundedDetail: 'Started in Tai Kok Tsui, Kowloon, providing residential aluminum window repair and glass replacement services.',
+      expansion: {
+        year: '2010',
+        title: 'Business Expansion',
+        detail: 'Expanded services to commercial buildings and industrial facilities, built a professional team, and enhanced service quality.',
+      },
+      innovation: {
+        year: '2020',
+        title: 'Technical Innovation',
+        detail: 'Introduced advanced inspection equipment, provided window sill leakage detection services, and obtained ISO certification, becoming an industry leader.',
+      },
     },
     
     // Capability
@@ -83,7 +93,7 @@ export const ENJSON = {
       },
       website: {
         title: 'Website and Social Links',
-        instagram: 'https://www.instagram.com/kamyatmaychu/',
+        instagram: 'https://www.facebook.com/profile.php?id=61567208204097',
       },
     },
   },
@@ -284,7 +294,18 @@ export const ENJSON = {
       requirement: 'Requirement Description',
       requirementPlaceholder: 'Please briefly describe the problem, area, expected time, etc.',
       submit: 'Submit',
+      submitting: 'Submitting...',
       note: 'We will reply via WhatsApp / phone. If you need to attach images, please send them directly to +852 6698 8964.',
+      success: {
+        title: 'Success',
+        description: 'We have received your message and will contact you within 2 hours.',
+      },
+      error: {
+        title: 'Submission Failed',
+        fillRequired: 'Please fill in all required fields.',
+        sendFailed: 'Failed to send. Please try again later or call +852 6698 8964 directly.',
+        notConfigured: 'EmailJS is not configured. Please check environment variables.',
+      },
     },
     mapNote: 'Click to enlarge the map and plan driving or public transport routes.',
   },

@@ -37,6 +37,16 @@ export const ZHTWJSON = {
       subtitle: 'TIMELINE',
       founded: '成立',
       foundedDetail: '自九龍大角咀起步，提供住宅鋁窗維修及玻璃更換服務。',
+      expansion: {
+        year: '2010',
+        title: '業務擴展',
+        detail: '擴大服務範圍至商業大廈及工業大樓，建立專業團隊，提升服務質素。',
+      },
+      innovation: {
+        year: '2020',
+        title: '技術創新',
+        detail: '引進先進檢測設備，提供窗台滲水檢測服務，並獲得ISO認證，成為業界領先企業。',
+      },
     },
     
     // Capability
@@ -83,7 +93,7 @@ export const ZHTWJSON = {
       },
       website: {
         title: '網站和社交連結',
-        instagram: 'https://www.instagram.com/kamyatmaychu/',
+        instagram: 'https://www.facebook.com/profile.php?id=61567208204097',
       },
     },
   },
@@ -284,7 +294,18 @@ export const ZHTWJSON = {
       requirement: '需求描述',
       requirementPlaceholder: '請簡述問題、面積、期望時間等資訊',
       submit: '提交資料',
+      submitting: '提交中...',
       note: '我們會以 WhatsApp／電話回覆，如需附加圖片可直接發送至 +852 6698 8964。',
+      success: {
+        title: '提交成功',
+        description: '我們已收到您的訊息，會在 2 小時內與您聯絡。',
+      },
+      error: {
+        title: '提交失敗',
+        fillRequired: '請填寫所有必填欄位。',
+        sendFailed: '發送失敗，請稍後再試或直接致電 +852 6698 8964。',
+        notConfigured: 'EmailJS 未配置，請檢查環境變量設置。',
+      },
     },
     mapNote: '點擊放大地圖，可規劃自駕或公共交通路線。',
   },

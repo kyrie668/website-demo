@@ -57,16 +57,16 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
-        <div className="hidden items-center gap-3 md:flex">
-          <Button
-            variant="outline"
-            className="border-slate-700 text-slate-900"
+        <div className="hidden items-center gap-4 md:flex">
+          <button
             onClick={() => changeLanguage(currentLanguage === 'zh-TW' ? 'en' : 'zh-TW')}
+            className="flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-slate-600 transition-colors hover:bg-emerald-100 hover:text-emerald-700"
+            aria-label="切换语言"
           >
-            <Languages className="mr-2 h-4 w-4" />
-            {currentLanguage === 'zh-TW' ? 'EN' : '繁中'}
-          </Button>
-          <Button variant="outline" className="border-slate-700 text-slate-900" asChild>
+            <Languages className="h-4 w-4" />
+            <span className="text-xs">{currentLanguage === 'zh-TW' ? 'EN' : '繁中'}</span>
+          </button>
+          <Button variant="outline" className="border-slate-300 text-slate-700 hover:bg-slate-50" asChild>
             <Link to="/projects">{t('header.viewProjects')}</Link>
           </Button>
           <Button className="bg-emerald-500 text-white hover:bg-emerald-600" asChild>

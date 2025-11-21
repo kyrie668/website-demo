@@ -1,5 +1,17 @@
 import { motion } from 'framer-motion';
-import { ShieldCheck, Building2, Factory, Users, Wrench, Handshake, MapPin, PhoneCall, Mail, Instagram } from 'lucide-react';
+import {
+  ShieldCheck,
+  Building2,
+  Factory,
+  Users,
+  Wrench,
+  Handshake,
+  MapPin,
+  PhoneCall,
+  Mail,
+  Instagram,
+  Facebook,
+} from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
@@ -14,7 +26,7 @@ const fadeUp = {
 
 const About = () => {
   const { t } = useTranslation();
-  
+
   const values = [
     {
       title: t('about.values.safety.title'),
@@ -61,9 +73,9 @@ const About = () => {
     },
     {
       title: t('about.contactInfo.website.title'),
-      value: 'Instagram',
+      value: 'Facebook',
       href: t('about.contactInfo.website.instagram'),
-      icon: Instagram,
+      icon: Facebook,
     },
   ];
 
@@ -72,23 +84,31 @@ const About = () => {
       <section className="bg-emerald-100 py-16 md:py-24">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-2 md:items-center">
           <motion.div {...fadeUp}>
-            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-slate-600">{t('about.subtitle')}</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-slate-600">
+              {t('about.subtitle')}
+            </p>
             <h1 className="mt-4 text-3xl font-bold leading-tight md:text-4xl">
               {t('about.companyName')}
               <span className="block text-2xl font-medium">{t('about.companyNameEn')}</span>
             </h1>
-            <p className="mt-4 text-base text-slate-700">
-              {t('about.description')}
-            </p>
+            <p className="mt-4 text-base text-slate-700">{t('about.description')}</p>
             <div className="mt-6 flex flex-wrap gap-4 text-sm font-medium text-slate-700">
-              <span className="rounded-full bg-white/70 px-4 py-2 shadow">{t('about.registeredBadge')}</span>
-              <span className="rounded-full bg-white/70 px-4 py-2 shadow">{t('about.emergencyBadge')}</span>
+              <span className="rounded-full bg-white/70 px-4 py-2 shadow">
+                {t('about.registeredBadge')}
+              </span>
+              <span className="rounded-full bg-white/70 px-4 py-2 shadow">
+                {t('about.emergencyBadge')}
+              </span>
             </div>
             <div className="mt-8 flex gap-4">
               <Button className="bg-emerald-600 text-white hover:bg-emerald-700" asChild>
                 <a href="/#/projects">{t('about.viewProjects')}</a>
               </Button>
-              <Button variant="outline" className="border-emerald-600 text-emerald-700 hover:bg-emerald-50" asChild>
+              <Button
+                variant="outline"
+                className="border-emerald-600 text-emerald-700 hover:bg-emerald-50"
+                asChild
+              >
                 <a href="/#/contact">{t('about.scheduleInspection')}</a>
               </Button>
             </div>
@@ -131,18 +151,46 @@ const About = () => {
       <section className="bg-white py-16">
         <div className="mx-auto max-w-5xl px-4">
           <div className="mb-10 text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-slate-500">{t('about.timeline.subtitle')}</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-slate-500">
+              {t('about.timeline.subtitle')}
+            </p>
             <h2 className="mt-3 text-3xl font-bold">{t('about.timeline.title')}</h2>
           </div>
           <div className="space-y-6 border-l border-slate-200 pl-6">
             <motion.div className="relative" {...fadeUp}>
-              <span className="absolute -left-[33px] mt-1 h-3 w-3 rounded-full border-4 border-white bg-emerald-500 shadow"></span>
+              <span className="absolute -left-[31px] mt-1 h-3 w-3 rounded-full border-4 border-white bg-emerald-500 shadow"></span>
               <div className="rounded-2xl bg-slate-50 p-6 shadow-sm">
                 <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                   2002
                 </p>
-                <h3 className="mt-1 text-xl font-semibold">{t('about.companyName')} {t('about.timeline.founded')}</h3>
+                <h3 className="mt-1 text-xl font-semibold">
+                  {t('about.companyName')} {t('about.timeline.founded')}
+                </h3>
                 <p className="mt-2 text-sm text-slate-600">{t('about.timeline.foundedDetail')}</p>
+              </div>
+            </motion.div>
+            <motion.div className="relative" {...fadeUp} transition={{ delay: 0.1 }}>
+              <span className="absolute -left-[31px] mt-1 h-3 w-3 rounded-full border-4 border-white bg-emerald-500 shadow"></span>
+              <div className="rounded-2xl bg-slate-50 p-6 shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+                  {t('about.timeline.expansion.year')}
+                </p>
+                <h3 className="mt-1 text-xl font-semibold">
+                  {t('about.timeline.expansion.title')}
+                </h3>
+                <p className="mt-2 text-sm text-slate-600">{t('about.timeline.expansion.detail')}</p>
+              </div>
+            </motion.div>
+            <motion.div className="relative" {...fadeUp} transition={{ delay: 0.2 }}>
+              <span className="absolute -left-[31px] mt-1 h-3 w-3 rounded-full border-4 border-white bg-emerald-500 shadow"></span>
+              <div className="rounded-2xl bg-slate-50 p-6 shadow-sm">
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
+                  {t('about.timeline.innovation.year')}
+                </p>
+                <h3 className="mt-1 text-xl font-semibold">
+                  {t('about.timeline.innovation.title')}
+                </h3>
+                <p className="mt-2 text-sm text-slate-600">{t('about.timeline.innovation.detail')}</p>
               </div>
             </motion.div>
           </div>
@@ -153,11 +201,11 @@ const About = () => {
         <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-2">
           <motion.div {...fadeUp}>
             <div className="rounded-3xl bg-emerald-700 p-8 text-white shadow-xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.4em] text-white/70">{t('about.capability.subtitle')}</p>
-              <h2 className="mt-4 text-3xl font-bold">{t('about.capability.title')}</h2>
-              <p className="mt-3 text-sm text-white/80">
-                {t('about.capability.description')}
+              <p className="text-sm font-semibold uppercase tracking-[0.4em] text-white/70">
+                {t('about.capability.subtitle')}
               </p>
+              <h2 className="mt-4 text-3xl font-bold">{t('about.capability.title')}</h2>
+              <p className="mt-3 text-sm text-white/80">{t('about.capability.description')}</p>
               <div className="mt-6 space-y-4 text-sm">
                 <div className="flex items-center gap-3 rounded-2xl bg-white/5 p-3">
                   <Building2 className="h-5 w-5 text-emerald-300" />
@@ -190,7 +238,9 @@ const About = () => {
       <section className="py-16 px-4">
         <div className="mx-auto max-w-6xl">
           <div className="mb-10 text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-slate-500">CONTACT</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-slate-500">
+              CONTACT
+            </p>
             <h2 className="mt-3 text-3xl font-bold">{t('about.contactInfo.website.title')}</h2>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -201,21 +251,23 @@ const About = () => {
                     <div className="rounded-2xl bg-slate-100 p-3 text-slate-700">
                       <info.icon className="h-5 w-5" />
                     </div>
-                    <div className="flex-1">
-                      <p className="text-xs font-semibold uppercase tracking-[0.4em] text-slate-500">
+                    <div className="flex-1 pr-2 w-full flex flex-col min-w-0">
+                      <p className="text-xs font-semibold uppercase tracking-[0.1em] text-slate-500">
                         {info.title}
                       </p>
                       {info.href ? (
-                        <a 
-                          href={info.href} 
+                        <a
+                          href={info.href}
                           target={info.href.startsWith('http') ? '_blank' : undefined}
                           rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                          className="text-lg font-semibold text-slate-900 hover:underline break-words"
+                          className="text-lg w-full font-semibold text-slate-900 hover:underline break-words break-all"
                         >
                           {info.value}
                         </a>
                       ) : (
-                        <p className="text-lg font-semibold text-slate-900 break-words">{info.value}</p>
+                        <p className="text-lg font-semibold text-slate-900 break-words">
+                          {info.value}
+                        </p>
                       )}
                     </div>
                   </CardContent>
@@ -229,17 +281,21 @@ const About = () => {
       <section className="bg-emerald-800 py-16 text-white">
         <div className="mx-auto flex max-w-5xl flex-col gap-8 px-4 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-white/60">{t('about.contact.subtitle')}</p>
-            <h2 className="mt-4 text-3xl font-bold">{t('about.contact.title')}</h2>
-            <p className="mt-2 text-sm text-white/80">
-              {t('about.contact.description')}
+            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-white/60">
+              {t('about.contact.subtitle')}
             </p>
+            <h2 className="mt-4 text-3xl font-bold">{t('about.contact.title')}</h2>
+            <p className="mt-2 text-sm text-white/80">{t('about.contact.description')}</p>
           </div>
           <div className="flex gap-4">
-            <Button variant="secondary" className="bg-white text-slate-900 hover:bg-slate-100" asChild>
+            <Button
+              variant="secondary"
+              className="bg-white text-slate-900 hover:bg-slate-100"
+              asChild
+            >
               <a href="/#/contact">{t('about.contact.contactAgent')}</a>
             </Button>
-            <Button variant="default"  asChild>
+            <Button variant="default" asChild>
               <a href="/#/services">{t('about.contact.serviceDetails')}</a>
             </Button>
           </div>
@@ -250,4 +306,3 @@ const About = () => {
 };
 
 export default About;
-

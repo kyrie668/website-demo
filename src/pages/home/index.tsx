@@ -12,6 +12,7 @@ import {
   MessageCircle,
   CheckCircle2,
   Sparkles,
+  Facebook,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -41,9 +42,9 @@ const FloatingSocialLinks = () => {
         href={t('about.contactInfo.website.instagram')}
         target="_blank"
         rel="noreferrer"
-        className="grid h-12 w-12 place-items-center rounded-full bg-pink-600 text-white shadow-lg transition hover:scale-105"
+        className="grid h-12 w-12 place-items-center rounded-full bg-blue-600 text-white shadow-lg transition hover:scale-105"
       >
-        <Instagram className="h-5 w-5" />
+        <Facebook className="h-5 w-5" />
       </a>
     </div>
   );

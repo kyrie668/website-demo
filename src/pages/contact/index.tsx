@@ -1,10 +1,13 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { PhoneCall, Mail, MapPin, Clock3, MessageCircle, FileText } from 'lucide-react';
+import { PhoneCall, Mail, MapPin, Clock3, MessageCircle, FileText, Loader2 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useTranslation } from 'react-i18next';
+import { useToast } from '@/hooks/use-toast';
+import emailjs from '@emailjs/browser';
 
 const fadeUp = {
   initial: { opacity: 0, y: 25 },
@@ -15,6 +18,101 @@ const fadeUp = {
 
 const Contact = () => {
   const { t } = useTranslation();
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    location: '',
+    requirement: '',
+  });
+
+  // EmailJS 配置
+  // 请在 https://www.emailjs.com/ 注册账户并获取以下配置信息
+  // 1. 创建 Email Service (Gmail/Outlook等)
+  // 2. 创建 Email Template
+  // 3. 获取 Public Key
+  const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID';
+  const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID';
+  const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY';
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // 验证表单
+    if (!formData.name || !formData.phone || !formData.email) {
+      toast({
+        variant: 'destructive',
+        title: t('contact.form.error.title'),
+        description: t('contact.form.error.fillRequired'),
+      });
+      return;
+    }
+
+    // 检查是否配置了 EmailJS
+    if (EMAILJS_SERVICE_ID === 'YOUR_SERVICE_ID' || EMAILJS_TEMPLATE_ID === 'YOUR_TEMPLATE_ID' || EMAILJS_PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+      toast({
+        variant: 'destructive',
+        title: t('contact.form.error.title'),
+        description: t('contact.form.error.notConfigured') || 'EmailJS 未配置，請檢查環境變量設置。',
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // 发送邮件（EmailJS会自动初始化）
+      const result = await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          phone: formData.phone,
+          location: formData.location || '未提供',
+          message: formData.requirement || '未提供',
+          to_email: 'maymaychu.mcc@gmail.com', // 接收邮件的邮箱
+          company_name: t('common.companyName'),
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+
+      console.log('Email sent successfully:', result);
+
+      // 成功提示
+      toast({
+        title: t('contact.form.success.title'),
+        description: t('contact.form.success.description'),
+      });
+
+      // 重置表单
+      setFormData({
+        name: '',
+        phone: '',
+        email: '',
+        location: '',
+        requirement: '',
+      });
+    } catch (error: any) {
+      console.error('Email send error:', error);
+      toast({
+        variant: 'destructive',
+        title: t('contact.form.error.title'),
+        description: t('contact.form.error.sendFailed'),
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (field: string, value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
   
   const contactInfos = [
     {
@@ -124,34 +222,76 @@ const Contact = () => {
                 <p className="text-sm text-slate-600">
                   {t('contact.form.description')}
                 </p>
-                <form className="space-y-4">
+                <form className="space-y-4" onSubmit={handleSubmit}>
                   <div>
                     <label className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
                       {t('contact.form.name')}
                     </label>
-                    <Input placeholder={t('contact.form.namePlaceholder')} className="mt-2" />
+                    <Input 
+                      placeholder={t('contact.form.namePlaceholder')} 
+                      className="mt-2" 
+                      value={formData.name}
+                      onChange={(e) => handleChange('name', e.target.value)}
+                      required
+                    />
                   </div>
                   <div className="grid gap-4 md:grid-cols-2">
                     <div>
                       <label className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">{t('contact.form.phone')}</label>
-                      <Input placeholder={t('contact.form.phonePlaceholder')} className="mt-2" />
+                      <Input 
+                        placeholder={t('contact.form.phonePlaceholder')} 
+                        className="mt-2" 
+                        value={formData.phone}
+                        onChange={(e) => handleChange('phone', e.target.value)}
+                        required
+                      />
                     </div>
                     <div>
                       <label className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">{t('contact.form.email')}</label>
-                      <Input placeholder={t('contact.form.emailPlaceholder')} className="mt-2" type="email" />
+                      <Input 
+                        placeholder={t('contact.form.emailPlaceholder')} 
+                        className="mt-2" 
+                        type="email" 
+                        value={formData.email}
+                        onChange={(e) => handleChange('email', e.target.value)}
+                        required
+                      />
                     </div>
                   </div>
                   <div>
                     <label className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">{t('contact.form.location')}</label>
-                    <Input placeholder={t('contact.form.locationPlaceholder')} className="mt-2" />
+                    <Input 
+                      placeholder={t('contact.form.locationPlaceholder')} 
+                      className="mt-2" 
+                      value={formData.location}
+                      onChange={(e) => handleChange('location', e.target.value)}
+                    />
                   </div>
                   <div>
                     <label className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">{t('contact.form.requirement')}</label>
-                    <Textarea placeholder={t('contact.form.requirementPlaceholder')} className="mt-2 min-h-[120px]" />
+                    <Textarea 
+                      placeholder={t('contact.form.requirementPlaceholder')} 
+                      className="mt-2 min-h-[120px]" 
+                      value={formData.requirement}
+                      onChange={(e) => handleChange('requirement', e.target.value)}
+                    />
                   </div>
-                  <Button className="w-full bg-slate-900 text-white hover:bg-slate-800" type="button">
-                    <FileText className="mr-2 h-4 w-4" />
-                    {t('contact.form.submit')}
+                  <Button 
+                    className="w-full" 
+                    type="submit"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        {t('contact.form.submitting')}
+                      </>
+                    ) : (
+                      <>
+                        <FileText className="mr-2 h-4 w-4" />
+                        {t('contact.form.submit')}
+                      </>
+                    )}
                   </Button>
                   <p className="text-xs text-slate-500">
                     {t('contact.form.note')}
