@@ -9,10 +9,8 @@ import {
   MapPin,
   Clock3,
   Instagram,
-  MessageCircle,
   CheckCircle2,
   Sparkles,
-  Facebook,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -23,31 +21,6 @@ const fadeUp = {
   whileInView: { opacity: 1, y: 0 },
   transition: { duration: 0.7 },
   viewport: { once: true, amount: 0.3 },
-};
-
-const FloatingSocialLinks = () => {
-  const { t } = useTranslation();
-  
-  return (
-    <div className="fixed right-4 top-1/3 z-30 hidden flex-col gap-3 md:flex">
-      <a
-        href={`https://wa.me/${t('about.contactInfo.phone.value').replace(/\s|\+|\(|\)|-/g, '')}`}
-        target="_blank"
-        rel="noreferrer"
-        className="grid h-12 w-12 place-items-center rounded-full bg-emerald-500 text-white shadow-lg transition hover:scale-105"
-      >
-        <MessageCircle className="h-5 w-5" />
-      </a>
-      <a
-        href={t('about.contactInfo.website.instagram')}
-        target="_blank"
-        rel="noreferrer"
-        className="grid h-12 w-12 place-items-center rounded-full bg-blue-600 text-white shadow-lg transition hover:scale-105"
-      >
-        <Facebook className="h-5 w-5" />
-      </a>
-    </div>
-  );
 };
 
 const Home = () => {
@@ -116,7 +89,6 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
-      <FloatingSocialLinks />
       <section id="hero" className="bg-emerald-50 py-12">
         <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-2 md:items-center">
           <motion.div {...fadeUp}>
