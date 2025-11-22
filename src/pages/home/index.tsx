@@ -16,6 +16,9 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useTranslation } from 'react-i18next';
 
+
+import CaseImg from '@/assets/images/case1/1.png';
+
 const fadeUp = {
   initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },
@@ -102,7 +105,7 @@ const Home = () => {
             <p className="mt-4 text-lg text-slate-600">
               {t('home.hero.description')}
             </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-8 flex flex-col mb-4 gap-4 sm:flex-row">
               <Button size="lg" className="bg-emerald-600 text-white hover:bg-emerald-700" asChild>
                 <a href="#projects">{t('home.hero.viewProjects')}</a>
               </Button>
@@ -115,6 +118,7 @@ const Home = () => {
                 <a href="#contact">{t('home.hero.contactUs')}</a>
               </Button>
             </div>
+            <img src={CaseImg} alt="CaseImg" className="w-full aspect-square object-cover" />
             <div className="mt-8 grid gap-4 rounded-2xl bg-white/70 p-4 shadow-sm sm:grid-cols-2">
               {stats.map((stat) => (
                 <div key={stat.label} className="rounded-xl border border-slate-200 p-4 text-center">

@@ -11,7 +11,7 @@ const FloatingSocialLinks = () => {
   const { t } = useTranslation();
   
   return (
-    <div className="fixed right-0 top-1/2 -translate-y-1/2 z-30 flex-col gap-0 flex">
+    <div className="fixed right-0 top-2/3 -translate-y-1/2 z-30 flex-col gap-0 flex">
       <a
         href={`https://wa.me/${t('about.contactInfo.phone.value').replace(/\s|\+|\(|\)|-/g, '')}`}
         target="_blank"
