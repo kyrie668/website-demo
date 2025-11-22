@@ -45,7 +45,7 @@ export function SiteHeader() {
       {/* 渐变遮罩层，确保文字可读性 */}
       <div className="absolute inset-0 bg-gradient-to-r from-emerald-600/95 via-emerald-500/90 to-emerald-400/85 backdrop-blur-sm" />
       
-      <div className="relative mx-auto flex h-[120px] w-full max-w-6xl items-center justify-between px-4">
+      <div className="relative mx-auto flex h-[120px] w-full max-w-7xl items-center justify-between px-4">
         <Link to="/" className="flex items-center gap-4 z-10">
           <img src={logo} alt={t('common.companyName')} className="h-16 w-16 object-contain drop-shadow-lg" />
           <div>

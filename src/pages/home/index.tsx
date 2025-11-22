@@ -129,20 +129,76 @@ const Home = () => {
             </div>
           </motion.div>
           <motion.div
-            className="relative overflow-hidden rounded-[32px] bg-white shadow-2xl"
+            className="flex flex-col gap-6"
             {...fadeUp}
             transition={{ duration: 0.9 }}
           >
-            <img
-              src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80"
-              alt="鋁窗維修現場"
-              className="h-full w-full object-cover"
-              loading="lazy"
-            />
-            <div className="absolute bottom-4 left-4 right-4 rounded-2xl bg-white/90 p-4 text-sm text-slate-700 shadow-lg">
-              <p className="font-semibold text-slate-900">工程師現場檢測</p>
-              <p>以熱像儀測試滲水源，記錄螺絲鬆動點，現場即時安排維修。</p>
+            {/* 主图片 */}
+            <div className="relative overflow-hidden rounded-[32px] bg-white shadow-2xl">
+              <img
+                src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80"
+                alt="鋁窗維修現場"
+                className="h-[400px] w-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute bottom-4 left-4 right-4 rounded-2xl bg-white/90 p-4 text-sm text-slate-700 shadow-lg">
+                <p className="font-semibold text-slate-900">工程師現場檢測</p>
+                <p>以熱像儀測試滲水源，記錄螺絲鬆動點，現場即時安排維修。</p>
+              </div>
             </div>
+            
+            {/* 图片网格 */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="relative overflow-hidden rounded-2xl bg-white shadow-lg">
+                <img
+                  src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80"
+                  alt="專業服務"
+                  className="h-48 w-full object-cover transition-transform duration-300 hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <p className="text-sm font-semibold text-white">專業維修</p>
+                </div>
+              </div>
+              <div className="relative overflow-hidden rounded-2xl bg-white shadow-lg">
+                <img
+                  src="https://images.unsplash.com/photo-1469796466635-455ede028aca?auto=format&fit=crop&w=600&q=80"
+                  alt="品質保證"
+                  className="h-48 w-full object-cover transition-transform duration-300 hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <p className="text-sm font-semibold text-white">品質保證</p>
+                </div>
+              </div>
+            </div>
+
+            {/* 联系卡片 */}
+            <Card className="border-emerald-200 bg-gradient-to-br from-emerald-50 to-white shadow-lg">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-lg flex items-center gap-2">
+                  <PhoneCall className="h-5 w-5 text-emerald-600" />
+                  {t('home.contact.title')}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex items-center gap-2 text-sm text-slate-700">
+                  <PhoneCall className="h-4 w-4 text-emerald-600" />
+                  <a href={`tel:${t('home.contact.phone.value').replace(/\s/g, '')}`} className="font-semibold hover:text-emerald-600">
+                    {t('home.contact.phone.value')}
+                  </a>
+                </div>
+                <div className="flex items-center gap-2 text-sm text-slate-700">
+                  <Clock3 className="h-4 w-4 text-emerald-600" />
+                  <span>{t('home.contact.hours.value')}</span>
+                </div>
+                <Button className="w-full bg-emerald-600 text-white hover:bg-emerald-700 mt-4" asChild>
+                  <a href="#contact">{t('home.hero.contactUs')}</a>
+                </Button>
+              </CardContent>
+            </Card>
           </motion.div>
         </div>
       </section>
