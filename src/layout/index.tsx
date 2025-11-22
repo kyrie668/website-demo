@@ -4,29 +4,37 @@ import { routes } from '../route';
 import { SiteHeader } from './site-header';
 import { SiteFooter } from './site-footer';
 import { Toaster } from '@/components/ui/toaster';
-import { MessageCircle, Facebook, ArrowUp } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const FloatingSocialLinks = () => {
   const { t } = useTranslation();
   
   return (
-    <div className="fixed right-4 top-1/2 -translate-y-1/2 z-30 flex-col gap-3 flex">
+    <div className="fixed right-0 top-1/2 -translate-y-1/2 z-30 flex-col gap-0 flex">
       <a
         href={`https://wa.me/${t('about.contactInfo.phone.value').replace(/\s|\+|\(|\)|-/g, '')}`}
         target="_blank"
         rel="noreferrer"
-        className="grid h-12 w-12 place-items-center rounded-full bg-emerald-500 text-white shadow-lg transition hover:scale-105"
+        className="grid h-14 w-14 place-items-center bg-emerald-500 shadow-lg transition hover:scale-105 hover:shadow-xl"
       >
-        <MessageCircle className="h-5 w-5" />
+        <img 
+          src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+          alt="WhatsApp" 
+          className="h-7 w-7 object-contain"
+        />
       </a>
       <a
         href={t('about.contactInfo.website.instagram')}
         target="_blank"
         rel="noreferrer"
-        className="grid h-12 w-12 place-items-center rounded-full bg-blue-600 text-white shadow-lg transition hover:scale-105"
+        className="grid h-14 w-14 place-items-center bg-blue-900 shadow-lg transition hover:scale-105 hover:shadow-xl"
       >
-        <Facebook className="h-5 w-5" />
+        <img 
+          src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" 
+          alt="Facebook" 
+          className="h-7 w-7 object-contain"
+        />
       </a>
     </div>
   );
