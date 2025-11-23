@@ -46,20 +46,20 @@ export function SiteHeader() {
       <div className="absolute inset-0 bg-gradient-to-r from-emerald-600/95 via-emerald-500/90 to-emerald-400/85 backdrop-blur-sm" />
       
       <div className="relative mx-auto flex h-[120px] w-full max-w-7xl items-center justify-between px-4">
-        <Link to="/" className="flex items-center gap-4 z-10">
-          <img src={logo} alt={t('common.companyName')} className="h-16 w-16 object-contain drop-shadow-lg" />
+        <Link to="/" className="flex items-center gap-2 md:gap-4 z-10 flex-shrink-0">
+          <img src={logo} alt={t('common.companyName')} className="h-12 w-12 md:h-16 md:w-16 xl:h-16 xl:w-16 object-contain drop-shadow-lg" />
           <div>
-            <p className="text-2xl md:text-4xl font-bold tracking-[0.08em] text-white drop-shadow-lg">{t('common.companyName')}</p>
-            <p className="text-sm md:text-base font-medium text-emerald-50 drop-shadow-md">{t('common.companyNameEn')}</p>
+            <p className="text-xl md:text-2xl xl:text-4xl font-bold tracking-[0.08em] text-white drop-shadow-lg whitespace-nowrap">{t('common.companyName')}</p>
+            <p className="text-xs md:text-sm xl:text-base font-medium text-emerald-50 drop-shadow-md whitespace-nowrap">{t('common.companyNameEn')}</p>
           </div>
         </Link>
-        <nav className="hidden items-center gap-8 text-sm font-medium md:flex z-10">
+        <nav className="hidden items-center gap-8 text-sm font-medium xl:flex z-10 min-w-0">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               to={link.href}
               className={cn(
-                'transition-colors hover:text-white drop-shadow-md',
+                'transition-colors hover:text-white drop-shadow-md whitespace-nowrap',
                 isActive(link.href) ? 'text-white font-semibold' : 'text-emerald-50'
               )}
             >
@@ -67,7 +67,7 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
-        <div className="hidden items-center gap-4 md:flex z-10">
+        <div className="hidden items-center gap-4 xl:flex z-10 flex-shrink-0">
           <button
             onClick={() => changeLanguage(currentLanguage === 'zh-TW' ? 'en' : 'zh-TW')}
             className="flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-emerald-50 transition-colors hover:bg-white/20 hover:text-white backdrop-blur-sm"
@@ -86,7 +86,7 @@ export function SiteHeader() {
 
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
-            <Button variant="ghost" className="h-10 w-10 p-0 md:hidden z-10" aria-label={t('header.openMenu')}>
+            <Button variant="ghost" className="h-10 w-10 p-0 xl:hidden z-10" aria-label={t('header.openMenu')}>
               <Menu className="h-6 w-6 text-white drop-shadow-lg" />
             </Button>
           </SheetTrigger>
